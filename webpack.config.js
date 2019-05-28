@@ -32,12 +32,13 @@ module.exports = ( env, options ) => {
 				{
 					test: /\.css$/,
 					use: [
+						'style-loader',
 						{
 							loader: 'css-loader',
 							options: {
-								importLoaders: 1,
-								minimize: ( options.mode === 'production' ),
+								importLoaders: 2,
 								sourceMap: true,
+								url: false
 							}
 						},
 					],
@@ -56,6 +57,8 @@ module.exports = ( env, options ) => {
 				},
 			],
 		},
-		plugins: [new HtmlWebpackPlugin()]
+		plugins: [new HtmlWebpackPlugin({
+			template: 'index.html'
+		})]
 	}
 };
