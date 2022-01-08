@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = ( env, options ) => {
 	return {
 		entry: [
-			'./src/index.js',
+			'./src/index.ts',
 			'webpack-dev-server/client?http://localhost:3000'
 		],
 		output: {
@@ -20,12 +20,9 @@ module.exports = ( env, options ) => {
 		module: {
 			rules: [
 				{
-					test: /\.jsx$|\.js$/,
+					test: /\.ts$/,
 					use: {
-						loader: 'babel-loader',
-						options: {
-							presets: ['@babel/preset-env'],
-						}
+						loader: 'ts-loader',
 					},
 					exclude: /node_modules/
 				},
